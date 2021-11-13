@@ -1,0 +1,18 @@
+.first {
+  height: 20px;
+  background-color: black;
+}
+.parent {
+  background-color: red;
+  margin-bottom: 20px;
+  height: 20px;
+}
+
+.child {
+  margin-top: 20px;
+  background-color: yellow;
+  height: 20px;
+
+  /* display: inline-block;
+  width: 100%; */
+}
