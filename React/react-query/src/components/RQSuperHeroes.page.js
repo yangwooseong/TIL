@@ -1,22 +1,18 @@
-import axios from 'axios'
-import { useState } from 'react'
-import { useQuery } from 'react-query'
-
-const fetchSuperHeroes = () => {
-  return axios.get('http://localhost:4000/superheroes')
-}
+import { Link } from 'react-router-dom'
+import { useSuperHeroesData } from '../hooks/useSuperHeroPage'
 
 export const RQSuperHeroesPage = () => {
-  const dataTransform = (data) => {
-    return data.data.map((hero) => hero.name)
+  const onSuccess = () => {
+    console.log('success')
   }
 
-  const { isLoading, data, isError, error, isFetching } = useQuery(
-    'super-heroes',
-    fetchSuperHeroes,
-    {
-      select: dataTransform,
-    },
+  const onError = () => {
+    console.log('error')
+  }
+
+  const { isLoading, isError, error, data } = useSuperHeroesData(
+    onSuccess,
+    onError,
   )
   if (isLoading) {
     return <h2>Loading...</h2>
@@ -24,13 +20,16 @@ export const RQSuperHeroesPage = () => {
   if (isError) {
     return <h2>{error.message}</h2>
   }
-  console.log(data)
 
   return (
     <>
       <h2>RQ Super Heroes Page</h2>
-      {data.map((name, idx) => {
-        return <div key={name}>{name}</div>
+      {data?.data.map((data, idx) => {
+        return (
+          <div key={idx}>
+            <Link to={`/rq-super-heroes/${idx + 1}`}>{data.name} </Link>
+          </div>
+        )
       })}
     </>
   )
