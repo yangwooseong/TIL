@@ -1,10 +1,15 @@
 import axios from 'axios'
 import { useQuery } from 'react-query'
 
-const fetchSuperHero = ({ queryKey }) => {
-  return axios.get(`http://localhost:4000/superheroes/${queryKey[1]}`)
+const fetchSuperHero = () => {
+  return axios.get(`http://localhost:4000/superheroes`)
 }
 
-export const useSuperHeroData = (heroId) => {
-  return useQuery(['super-hero', heroId], fetchSuperHero)
+export const useSuperHeroData = () => {
+  const queryInfo = useQuery('super-hero', fetchSuperHero)
+
+  return {
+    ...queryInfo,
+    data: queryInfo.data?.data.map((val) => val.name.toUpperCase()),
+  }
 }
