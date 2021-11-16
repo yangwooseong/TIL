@@ -11,8 +11,15 @@ export const RQSuperHeroesPage = () => {
   const useAddSuperHeroData = () => {
     const queryClient = useQueryClient()
     return useMutation(addSuperHero, {
-      onSuccess: () => {
-        queryClient.invalidateQueries('super-hero')
+      onSuccess: (data) => {
+        queryClient.setQueryData('super-hero', (oldQueryData) => {
+          console.log(oldQueryData, data)
+          return {
+            oldQueryData,
+            data: [...oldQueryData.data, data.data],
+          }
+        })
+        // queryClient.invalidateQueries('super-hero')
       },
     })
   }
