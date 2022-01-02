@@ -1,0 +1,37 @@
+<!-- 
+DOM 트리의 노드는 4가지로 구성된다.
+1. document : DOM 진입점
+2. Element node
+3. Text node
+4. 주석 node
+
+탐색 프로퍼티는 크게 두 분류로 나뉨.
+
+모든 노드에 적용 가능한 parentNode, childNodes, firstChild, lastChild, previousSibling, nextSibling
+요소 노드에만 적용 가능한 parentElement, children, firstElementChild, lastElementChild, previousElementSibling, nextElementSibling
+
+텍스트 노드 != 요소 노드인 것 만 잘 기억해두자. 
+
+querySelectorAll는 최신 상태를 유지하지 않지만 queryElementsBy* 는 최신 상태를 유지한다.
+
+ -->
+
+<html>
+<body>
+  <div id='id'>사용자:</div>
+  <ul>
+    <li>John</li>
+    <li>Pete</li>
+  </ul>
+  <script>
+    console.log(document.body.firstElementChild)
+    console.log(document.body.children[0])
+    console.log(document.body.childNodes[1])
+  
+    console.log(document.body.children[1])
+    console.log(document.body.children)
+    console.log(document.body.lastElementChild)
+    console.log(window['id'])
+  </script>
+</body>
+</html>
