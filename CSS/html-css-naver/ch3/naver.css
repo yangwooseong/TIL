@@ -7,7 +7,6 @@ div#header-center {
 }
 
 #header-search {
-  background-color: red;
 }
 
 div#header-search > h1 {
@@ -35,6 +34,25 @@ div#header-search h2 {
   border: 0;
   margin: 0;
   padding: 0;
+}
+
+#header-search fieldset button {
+  padding: 0;
+  border: 0;
+  width: 56px;
+  height: 56px;
+  background-color: #19ce60;
+}
+
+#search-image {
+  display: inline-block;
+  width: 44px;
+  height: 44px;
+  background-size: 700px;
+  background-image: url(./sp_main_57f073.png);
+  background-position: -659px;
+  background-repeat: no-repeat;
+  margin: 7px;
 }
 
 .blind {
