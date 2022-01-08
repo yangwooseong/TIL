@@ -1,0 +1,22 @@
+div#header-center {
+  margin: 0 auto;
+  width: 1080px;
+}
+
+#header-center > div span {
+  background-color: red;
+}
+
+div#header-search > h1 {
+  width: 280px;
+  display: inline-block;
+}
+
+div#header-search h2 {
+  display: none;
+}
+
+#header-search fieldset {
+  width: 520px;
+  display: inline-block;
+}

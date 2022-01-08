@@ -1,6 +1,7 @@
 import './App.css'
 import { useCallback, useMemo, useState } from 'react'
 import { ChildComponent } from './components/ChildComponent'
+import { Suspense } from '../../react-query/src/Suspense'
 
 function App() {
   const [value, setValue] = useState({ name: '', id: '' })

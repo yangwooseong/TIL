@@ -1,0 +1,68 @@
+* {
+  box-sizing: border-box;
+}
+div#header-center {
+  margin: 0 auto;
+  width: 1080px;
+}
+
+#header-search {
+  background-color: red;
+}
+
+div#header-search > h1 {
+  width: 235px;
+  height: 54px;
+  vertical-align: middle;
+  display: inline-block;
+  background-image: url(https://s.pstatic.net/static/www/img/uit/2021/sp_main_57f073.png);
+  background-position: 0 -161px;
+  background-size: 471px 442px;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  text-indent: -100%;
+  overflow: hidden;
+}
+
+div#header-search h2 {
+  display: none;
+}
+
+#header-search fieldset {
+  vertical-align: middle;
+  width: 520px;
+  display: inline-block;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.blind {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+}
+
+.green_window {
+  width: 586px;
+  height: 56px;
+  border: 2px solid #19ce60;
+  margin-left: 20px;
+}
+
+.green_window > input {
+  width: 474px;
+  height: 50px;
+  padding: 13px 15px;
+  margin: 1px;
+  background-color: #fff;
+  font-size: 18px;
+  line-height: 24px;
+  color: #000;
+  font-weight: 700;
+  outline: 0;
+  border: none;
+}
