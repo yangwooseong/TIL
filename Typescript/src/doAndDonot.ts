@@ -38,3 +38,23 @@ const nonPrimitiveNumberType: Number = new Number(1)
 
 // const primitivenumberType: number = new Number(1) // error
 const primitivenumberType: number = Number(1) // OK
+
+/*
+2. Don’t ever have a generic type which doesn’t use its type parameter. 
+*/
+
+interface Something<T> {
+  name: string
+} // 와 같이 쓰지 말자는 것. 적어도 T를 포함하도록 쓰자는 것.
+let x: Something<number>
+let y: Something<string>
+// x = y 에러를 보여주긴 하네.
+
+/*
+3. Don't use the return type any for callbacks whose value will be ignored
+*/
+
+function fn(x: () => any) {
+  var k = x() // oops! meant to do something else
+  k.doSomething() // error, but would be OK if the return type had been 'any'
+} // any 라면 에러가 안떠서 타입체크가 안됨
