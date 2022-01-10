@@ -1,11 +1,19 @@
 interface Something<T> {
   name: string
-  value: T
+} // Not OK
+
+interface SomethingElse<T> {
+  name: string
+  some: T
+} // OK
+
+let a: SomethingElse<number> = {
+  name: 'yang',
+  some: 15,
 }
 
-// let x: Something<number> = {
-//   name: 'haha',
-// }
-// let y: Something<string> = {
-//   name: 'haha',
-// }
+const makeFullName = <T extends { firstName: string; lastName: string }>(
+  obj: T,
+) => ({ ...obj, fullName: obj.firstName + ' ' + obj.lastName })
+
+const v = makeFullName({ firstName: 'hello', lastName: 'world', age: '2015' })
