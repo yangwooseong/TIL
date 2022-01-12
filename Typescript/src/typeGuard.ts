@@ -78,7 +78,7 @@ function identity<T>(value: T): T {
 
 const result = identity<ProgrammingLanguage>({ name: 'TypeScript' })
 
-// 3) promise 반환 값의 타입을 선언할 때: 이게 젤 유용해 보인다
+// 3) promise 반환 값의 타입을 선언할 때
 type User = {
   name: string
 }
@@ -94,3 +94,17 @@ const wrapper = async () => {
 }
 
 export {}
+
+// practice
+
+interface user {
+  name: 'abc'
+}
+
+type myuser<T> = {
+  [K in keyof T]: boolean
+}
+
+const me: myuser<user> = {
+  name: true,
+}
