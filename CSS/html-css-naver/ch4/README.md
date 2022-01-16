@@ -10,7 +10,7 @@
 
 2. Position
 
-- default 는 static 이며, left, top, right, bottom, z-index 속성을 지정해도 영향을 받지 않는다.
+- default 는 static 이며, **left, top, right, bottom, z-index 속성을 지정해도 영향을 받지 않는다.**
 - flex는 오래된 IE에서 지원이 안되거나 최신 IE에서 버그가 발생하는 경우가 있어서 가운데 정렬할 때 flex를 안쓰고 position, transition, transoform을 이용해야 하는 경우가 있다.
 
 3. 태그 우선 순위

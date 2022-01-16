@@ -1,0 +1,36 @@
+/* body {
+  background: beige;
+}
+
+section {
+  display: inline;
+  background: lightgray;
+}
+
+p {
+  width: 50%; == body 너비의 절반 */
+/* height: 200px; 참고: 백분율 값이었으면 0 => 아닌거같은데..? */
+/* height: 50%;
+  background: cyan;
+} */
+
+body {
+  background: beige;
+}
+
+section {
+  width: 400px;
+  height: 480px;
+  margin: 30px;
+  padding: 15px;
+  background: lightgray;
+}
+
+p {
+  position: fixed;
+  width: 50%; /* == (50vw - (세로 스크롤바 너비)) */
+  height: 50%; /* == (50vh - (가로 스크롤바 높이)) */
+  margin: 5%; /* == (5vw - (세로 스크롤바 너비)) */
+  padding: 5%; /* == (5vw - (세로 스크롤바 너비)) */
+  background: cyan;
+}
