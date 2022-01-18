@@ -6,7 +6,7 @@ import { RQSuperHeroesPage } from './components/RQSuperHeroes.page'
 import { SuperHeroesPage } from './components/SuperHeroes.page'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import { RQSuperHeroPage } from './components/RQSuperHeroPage'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { ProfilePage } from './ProfilePage'
 
 const queryClient = new QueryClient()

@@ -1,34 +1,57 @@
+import { useEffect, useMemo, useRef, useState } from 'react'
 import './App.css'
-import { useCallback, useMemo, useState } from 'react'
 import { ChildComponent } from './components/ChildComponent'
-import { Suspense } from '../../react-query/src/Suspense'
 
 function App() {
-  const [value, setValue] = useState({ name: '', id: '' })
-  const onChange = (e) => {
-    const { value, name } = e.target
-    setValue((prev) => {
-      return { ...prev, [name]: value }
-    })
-  }
-  const foo = () => {
-    console.log('foo')
-    return 'foo'
-  } // re render 될때마다 호출됨
+  const [number, setNumber] = useState(0)
+  const [dark, setDark] = useState(false)
+  // const doubleNumber = useMemo(() => slowFuntion(number), [number])
+  // 사용법 1) rerendering 되더라도 연산량이 많은 연산을 피하고 싶을 때
+  const doubleNumber = slowFuntion(number)
 
-  const bar = useMemo(() => {
-    console.log('bar')
-    return 'bar'
-  }, [value.name]) // re render 되더라도 value.name 이 변하지 않으면 호출 안됨
+  // const themeStyles = useMemo(
+  //   () => ({
+  //     backgroundColor: dark ? 'black' : 'white',
+  //     color: dark ? 'white' : 'black',
+  //   }),
+  //   [dark],
+  // )
+  // 사용법 2) object의 reference 를 유지하고 싶을 때
+  // useMemo 를 안해주면 rendering 이 다시 일어날 때마다
+  // 새로운 reference를 가지는 themeStyles 가 만들어지면서
+  // useEffect안의 콜백이 실행되게 된다.
+
+  // ** Anti pattern : themeStyles가 dark 에 의존하는 것이 아니라
+  // 정적인 object라면 useMemo를 피하고 useRef를 이용하는게 올바른 사용법이다.
+  // useRef 를 사용하면 reference 를 그대로 유지하기 때문에 rerendering 되더라도
+  // useEffect안의 콜백이 실행되지 않는다.
+  let myThemeStyles = useRef({
+    backgroundColor: 'black',
+  })
+
+  function slowFuntion(num) {
+    console.log('calling slow function')
+    for (let i = 0; i <= 10 ** 9; i++) {}
+    return num * 2
+  }
+
+  useEffect(() => {
+    console.log('Theme Changed')
+    slowFuntion(1)
+  }, [myThemeStyles])
 
   return (
-    <div className='App'>
-      <div>{foo()}</div>
-      <div>{bar}</div>
-      <input value={value.name} name={'name'} onChange={onChange} type='text' />
-      <input value={value.id} name={'id'} onChange={onChange} type='text' />
-      <ChildComponent props={value.name} />
-    </div>
+    <>
+      <input
+        type='number'
+        value={number}
+        onChange={(e) => setNumber(parseInt(e.target.value))}
+      />
+      <button onClick={() => setDark((prevDark) => !prevDark)}>
+        Change Theme
+      </button>
+      <div style={myThemeStyles}>{doubleNumber}</div>
+    </>
   )
 }
 
