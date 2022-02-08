@@ -37,3 +37,14 @@ console.log(curriedSum(1)(2))
 // console.log(curriedSum(1, 2, 3))
 // console.log(curriedSum(1)(2, 3))
 // console.log(curriedSum(1)(2)(3))
+
+// Infinite currying
+
+function add(a) {
+  return function (b) {
+    if (b) return add(a + b)
+    return a
+  }
+}
+
+console.log(add(1)(2)(3)(4)(5)()) // cool!
