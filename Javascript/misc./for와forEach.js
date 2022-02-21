@@ -1,7 +1,6 @@
+const promiseFunction = () =>
+  new Promise((resolve) => setTimeout(() => resolve('result'), 1000))
 function test() {
-  const promiseFunction = () =>
-    new Promise((resolve) => setTimeout(() => resolve('result'), 1000))
-
   Array(10)
     .fill(0)
     .forEach(async () => {
@@ -11,9 +10,6 @@ function test() {
 }
 
 async function testWithFor() {
-  const promiseFunction = () =>
-    new Promise((resolve) => setTimeout(() => resolve('result'), 1000))
-
   for (let i = 0; i < 10; i++) {
     const result = await promiseFunction()
     console.log(result)
@@ -32,3 +28,8 @@ Array.prototype.forEach = function (callback) {
     callback(this[index], index, this)
   }
 }
+
+// map 역시 callback 만 호출
+Promise.all([1, 2, 3].map(async () => await promiseFunction())).then((v) =>
+  console.log(v),
+)
