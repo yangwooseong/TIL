@@ -1,12 +1,23 @@
 <html lang="en">
+<style>
+  html, body {
+    height: 5000px;
+    margin: 0;
+  }
+  .normal-scroll {
+    position: fixed;
+  }
+</style>
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <script src="./generator.js"></script>
 </head>
 <body>
-  
+  <h2 class='normal-scroll'></h2>
+  <h2 class='throttle-scroll'></h2>
+  <h2 class='debounced-scroll'></h2>
 </body>
+  <script src="./ThrottleAndDebounce.js"></script>
 </html>

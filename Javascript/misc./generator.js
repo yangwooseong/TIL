@@ -1,5 +1,9 @@
 import { fetchDog, fetchCat, fetchRat } from './api/mock.js'
 
+const fetchCat = () => new Promise((res) => setTimeout(() => res('cat'), 1000))
+const fetchDog = () => new Promise((res) => setTimeout(() => res('dog'), 2000))
+const fetchRat = () => new Promise((res) => setTimeout(() => res('rat'), 3000))
+
 function* asyncFuncWithGenerator() {
   const cat = yield fetchCat()
   console.log('doing with some process with ', cat)
