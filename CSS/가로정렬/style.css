@@ -1,0 +1,21 @@
+.grid {
+  background-color: white;
+  width: 500px;
+  text-align: center;
+  /* overflow: hidden; */
+  /* 자식 tag에 float를 주게 되면 높이에 반영이 안되서
+  높이를 강제로 100px 주거나 overflow 속성을 주거나 해야됨 */
+}
+
+.grid-item {
+  /* float: left; */
+  width: 100px;
+  height: 100px;
+  background-color: #f0f8ff;
+  vertical-align: top;
+  display: inline-block;
+}
+
+* {
+  background-color: grey;
+}
